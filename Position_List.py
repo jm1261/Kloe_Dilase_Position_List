@@ -37,9 +37,8 @@ for i in range(0, repeat_patterns):
 
 
 date = datetime.date(datetime.now())
-output_name = f'test_file2_{date}'
+output_name = f'test_file3_{date}'
 output_path = os.path.join(position_list_dir,
                            f'{output_name}.xdfl')
-output_file = open(f'{output_path}', 'w')
-[output_file.writelines(f'{L}\n') for L in position_array]
-output_file.close()
+io.write_out_file(out_path=output_path,
+                  array=position_array)
