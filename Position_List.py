@@ -16,19 +16,20 @@ io.check_dir_exists(position_list_dir)
 
 position_initial = {'file_name' : 'Test.lwo',
                     'laser' : 10,
-                    'velocity' : 5,
                     'modulation' : 5,
+                    'velocity' : 5,
                     'x_initial' : 0,
                     'y_initial' : 0,
                     'z_initial' : 0,
                     'repeat_patterns' : 5,
                     }
 
-position_array = pb.x_copy(position_initial=position_initial,
-                           shift=0.15)
+position_array = pb.velocity_x_copy(pos_i=position_initial,
+                                    x_shift=0.15,
+                                    vel_shift=10)
 
 date = datetime.date(datetime.now())
-output_name = f'test_file4_{date}'
+output_name = f'test_file6_{date}'
 output_path = os.path.join(position_list_dir,
                            f'{output_name}.xdfl')
 io.write_out_file(out_path=output_path,
