@@ -24,8 +24,8 @@ position_initial = {'file_name' : 'Test.lwo',
                     'repeat_patterns' : 5,
                     }
 
-position_array = pb.z_shift(position_initial=position_initial,
-                            shift=0.15)
+position_array = pb.x_copy(position_initial=position_initial,
+                           shift=0.15)
 
 date = datetime.date(datetime.now())
 output_name = f'test_file4_{date}'
