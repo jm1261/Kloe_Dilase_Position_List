@@ -36,18 +36,26 @@ def position_list(pos_i,
     position_list = []
     laser_string = laser_choice(pos_i=pos_i)
     position_list.append(laser_string)
+    initial_position = (f'"LWO" '
+                        f'"{pos_i["file_name"]}" '
+                        f'"{pos_i["modulation"]}" '
+                        f'"{pos_i["velocity"]}" '
+                        f'"{pos_i["x_initial"]}" '
+                        f'"{pos_i["y_initial"]}" '
+                        f'"{pos_i["z_initial"]}" ')
+    position_list.append(initial_position)
     for i in range(0, shift_array[5]):
         file_type = "LWO"
         file_name = f'"{pos_i["file_name"]}"'
-        modulation = float(pos_i["modulation"])+((i+1)*shift_array[0])
-        velocity = float(pos_i["velocity"])+((i+1)*shift_array[1])
-        x_pos = float(pos_i["x_initial"])+((i+1)*shift_array[2])
-        y_pos = float(pos_i["y_initial"])+((i+1)*shift_array[3])
-        z_pos = float(pos_i["z_initial"])+((i+1)*shift_array[4])
-        position_string = (f'{file_type} '
+        mod = round(float(pos_i["modulation"])+((i+1)*shift_array[0]), 3)
+        vel = round(float(pos_i["velocity"])+((i+1)*shift_array[1]), 3)
+        x_pos = round(float(pos_i["x_initial"])+((i+1)*shift_array[2]), 3)
+        y_pos = round(float(pos_i["y_initial"])+((i+1)*shift_array[3]), 3)
+        z_pos = round(float(pos_i["z_initial"])+((i+1)*shift_array[4]), 3)
+        position_string = (f'"{file_type}" '
                            f'{file_name} '
-                           f'"{modulation}" '
-                           f'"{velocity}" '
+                           f'"{mod}" '
+                           f'"{vel}" '
                            f'"{x_pos}" '
                            f'"{y_pos}" '
                            f'"{z_pos}" ')
@@ -82,21 +90,21 @@ def repeat_position_list(pos_array,
             split = line.split(' ')
             if split[0] == '"ALS"':
                 position_list.append(line)
-            if split[0] == 'LWO':
+            if split[0] == '"LWO"':
                 file_type = split[0]
                 file_name = split[1]
-                modulation = float((split[2])[1:-1])+((i+1)*repeat_array[0])
-                velocity = float((split[3])[1:-1])+((i+1)*repeat_array[1])
-                x_pos = float((split[4])[1:-1])+((i+1)*repeat_array[2])
-                y_pos = float((split[5])[1:-1])+((i+1)*repeat_array[3])
-                z_pos = float((split[6])[1:-1])+((i+1)*repeat_array[4])
-                new_line = (f'"{file_type}" '
+                mod = round(float((split[2])[1:-1])+((i+1)*repeat_array[0]), 3)
+                vel = round(float((split[3])[1:-1])+((i+1)*repeat_array[1]), 3)
+                x = round(float((split[4])[1:-1])+((i+1)*repeat_array[2]), 3)
+                y = round(float((split[5])[1:-1])+((i+1)*repeat_array[3]), 3)
+                z = round(float((split[6])[1:-1])+((i+1)*repeat_array[4]), 3)
+                new_line = (f'{file_type} '
                             f'{file_name} '
-                            f'"{modulation}" '
-                            f'"{velocity}" '
-                            f'"{x_pos}" '
-                            f'"{y_pos}" '
-                            f'"{z_pos}" ')
+                            f'"{mod}" '
+                            f'"{vel}" '
+                            f'"{x}" '
+                            f'"{y}" '
+                            f'"{z}" ')
                 position_list.append(new_line)
     print(f'\nRepeat Position List:\n')
     [print(L) for L in position_list]
