@@ -15,7 +15,7 @@ io.check_dir_exists(position_list_dir)
 ## "LWO" "File Name" "Modulation" "Velocity" "x-offset" "y-offset" "z-offset" ##
 
 position_initial = {'file_name' : 'Test.lwo',
-                    'laser' : 10,
+                    'laser' : 0.5,
                     'modulation' : 5,
                     'velocity' : 5,
                     'x_initial' : 0,
@@ -29,8 +29,9 @@ position_array = pb.velocity_x_copy(pos_i=position_initial,
                                     vel_shift=10)
 
 date = datetime.date(datetime.now())
-output_name = f'test_file6_{date}'
+output_name = f'test_file7{date}'
 output_path = os.path.join(position_list_dir,
                            f'{output_name}.xdfl')
 io.write_out_file(out_path=output_path,
-                  array=position_array)
+                  array=position_array,
+                  pos_i=position_initial)
