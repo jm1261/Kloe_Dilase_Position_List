@@ -17,7 +17,7 @@ lwo_file_name = 'Test.lwo'
 ## as well as the file path. Dilase requires the entire path to file ##
 kloe_user = 'Test'
 file_name = os.path.join('D:\\',
-                         'LITHO FILES',
+                         'LITHO_FILES',
                          f'{kloe_user}',
                          f'{lwo_file_name}')
 
@@ -26,27 +26,30 @@ file_name = os.path.join('D:\\',
 ## "LWO" "File Name" "Modulation" "Velocity" "x-offset" "y-offset" "z-offset" ##
 
 position_initial = {'file_name' : f'{file_name}',
-                    'laser' : 0.5,
-                    'modulation' : 5,
-                    'velocity' : 5,
+                    'laser' : 10,
+                    'modulation' : 0,
+                    'velocity' : 0,
                     'x_initial' : 0,
                     'y_initial' : 0,
-                    'z_initial' : 0,
-                    'repeat_patterns' : 5,
+                    'z_initial' : 10,
                     }
 
 ## pattern_shift = [modulation, velocity, x, y, z, repeats] ##
-pattern_shift = [0, 5, 0, 1, 0, 5]
+## NOTE WELL, if repeat=0 only the initial settings are set ##
+## repeat=1 yields two patterns with step sizes given below ##
+pattern_shift = [10, 0, 0.15, 0, 0, 10]
 position_list = pb.position_list(pos_i=position_initial,
                                  shift_array=pattern_shift)
 
 ## pattern_repeat = [modulation, velocity, x, y, z, repeats] ##
-pattern_repeat = [10, 0, 1, 1.5, 1, 2]
+## NOTE WELL, if repeat=0 only the initial settings are set  ##
+## repeat=1 yields two patterns with step sizes given below  ##
+pattern_repeat = [0, 10, 0, 0.15, 0, 10]
 position_final = pb.repeat_position_list(pos_array=position_list,
                                          repeat_array=pattern_repeat)
 
 date = datetime.date(datetime.now())
-output_name = f'test_file9_{date}'
+output_name = f'test_file10_{date}'
 output_path = os.path.join(position_list_dir,
                            f'{output_name}.xdfl')
 io.write_out_file(out_path=output_path,
