@@ -29,9 +29,8 @@ position_array = pb.velocity_x_copy(pos_i=position_initial,
                                     vel_shift=10)
 
 date = datetime.date(datetime.now())
-output_name = f'test_file7{date}'
+output_name = f'test_file7_{date}'
 output_path = os.path.join(position_list_dir,
                            f'{output_name}.xdfl')
 io.write_out_file(out_path=output_path,
-                  array=position_array,
-                  pos_i=position_initial)
+                  array=position_array)
