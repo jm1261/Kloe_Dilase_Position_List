@@ -10,11 +10,22 @@ position_list_dir = os.path.join(root,
                                  'Kloe')
 io.check_dir_exists(position_list_dir)
 
+## Name of the LWO file containing your pattern (single shape or design) ##
+lwo_file_name = 'Test.lwo'
+
+## Specific system file path, Windows requires the driver to be specified ##
+## as well as the file path. Dilase requires the entire path to file ##
+kloe_user = 'Test'
+file_name = os.path.join('D:\\',
+                         'LITHO FILES',
+                         f'{kloe_user}',
+                         f'{lwo_file_name}')
+
 ## Firstly, what should a Kloe Dilase 650 position list look like? ##
 ## "ALS" "Ligne2/Laser1" ##
 ## "LWO" "File Name" "Modulation" "Velocity" "x-offset" "y-offset" "z-offset" ##
 
-position_initial = {'file_name' : 'Test.lwo',
+position_initial = {'file_name' : f'{file_name}',
                     'laser' : 0.5,
                     'modulation' : 5,
                     'velocity' : 5,
