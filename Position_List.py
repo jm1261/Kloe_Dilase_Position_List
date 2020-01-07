@@ -24,14 +24,19 @@ position_initial = {'file_name' : 'Test.lwo',
                     'repeat_patterns' : 5,
                     }
 
-position_array = pb.velocity_x_copy(pos_i=position_initial,
-                                    x_shift=0.15,
-                                    vel_shift=10)
+## pattern_shift = [modulation, velocity, x, y, z, repeats] ##
+pattern_shift = [0, 5, 0, 1, 0, 5]
+position_list = pb.position_list(pos_i=position_initial,
+                                 shift_array=pattern_shift)
+
+## pattern_repeat = [modulation, velocity, x, y, z, repeats] ##
+pattern_repeat = [10, 0, 1, 1.5, 1, 2]
+position_final = pb.repeat_position_list(pos_array=position_list,
+                                         repeat_array=pattern_repeat)
 
 date = datetime.date(datetime.now())
-output_name = f'test_file7{date}'
+output_name = f'test_file9_{date}'
 output_path = os.path.join(position_list_dir,
                            f'{output_name}.xdfl')
 io.write_out_file(out_path=output_path,
-                  array=position_array,
-                  pos_i=position_initial)
+                  array=position_final)
