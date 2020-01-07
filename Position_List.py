@@ -1,5 +1,6 @@
 import os
 import Functions.InputOutput as io
+import Functions.PositionBuilder as pb
 from datetime import datetime
 
 root = os.getcwd()
@@ -13,27 +14,24 @@ io.check_dir_exists(position_list_dir)
 ## "ALS" "Ligne2/Laser1" ##
 ## "LWO" "File Name" "Modulation" "Velocity" "x-offset" "y-offset" "z-offset" ##
 
-file_name = "Test.lwo"
-laser = 10
-velocity = 5
-modulation = 5
-x_offset = 0
-y_offset = 0
-z_offset = 0
+position_initial = {'file_name' : 'Test.lwo',
+                    'laser' : 0.5,
+                    'modulation' : 5,
+                    'velocity' : 5,
+                    'x_initial' : 0,
+                    'y_initial' : 0,
+                    'z_initial' : 0,
+                    'repeat_patterns' : 5,
+                    }
+
+position_array = pb.velocity_x_copy(pos_i=position_initial,
+                                    x_shift=0.15,
+                                    vel_shift=10)
 
 date = datetime.date(datetime.now())
-output_name = f'test_file1_{date}'
-
-position_string = (f'"LWO" '
-                   f'"{file_name}" '
-                   f'"{modulation}" '
-                   f'"{velocity}" '
-                   f'"{x_offset}" '
-                   f'"{y_offset}" '
-                   f'"{z_offset}"')
-
+output_name = f'test_file7{date}'
 output_path = os.path.join(position_list_dir,
                            f'{output_name}.xdfl')
-output_file = open(f'{output_path}', 'w')
-output_file.writelines(f'{position_string}\n')
-output_file.close()
+io.write_out_file(out_path=output_path,
+                  array=position_array,
+                  pos_i=position_initial)
