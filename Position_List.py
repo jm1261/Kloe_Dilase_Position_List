@@ -17,7 +17,7 @@ lwo_file_name = 'Test.lwo'
 ## as well as the file path. Dilase requires the entire path to file ##
 kloe_user = 'Test'
 file_name = os.path.join('D:\\',
-                         'LITHO_FILES',
+                         'LITHO FILES',
                          f'{kloe_user}',
                          f'{lwo_file_name}')
 
@@ -26,18 +26,18 @@ file_name = os.path.join('D:\\',
 ## "LWO" "File Name" "Modulation" "Velocity" "x-offset" "y-offset" "z-offset" ##
 
 position_initial = {'file_name' : f'{file_name}',
-                    'laser' : 10,
-                    'modulation' : 0,
-                    'velocity' : 0,
-                    'x_initial' : 0,
-                    'y_initial' : 0,
-                    'z_initial' : 10,
+                    'laser' : 0.5,
+                    'modulation' : 0.0,
+                    'velocity' : 0.0,
+                    'x_initial' : 1,
+                    'y_initial' : 1,
+                    'z_initial' : 5.359,
                     }
 
 ## pattern_shift = [modulation, velocity, x, y, z, repeats] ##
 ## NOTE WELL, if repeat=0 only the initial settings are set ##
 ## repeat=1 yields two patterns with step sizes given below ##
-pattern_shift = [10, 0, 0.15, 0, 0, 10]
+pattern_shift = [10, 0, 0.27, 0, 0, 10]
 position_list = pb.position_list(pos_i=position_initial,
                                  shift_array=pattern_shift)
 
@@ -48,9 +48,13 @@ pattern_repeat = [0, 10, 0, 0.15, 0, 10]
 position_final = pb.repeat_position_list(pos_array=position_list,
                                          repeat_array=pattern_repeat)
 
+z_repeat = [0, 0, 0, 0, 0.002, 10]
+z_position_final = pb.repeat_position_list(pos_array=position_final,
+                                           repeat_array=z_repeat)
+
 date = datetime.date(datetime.now())
-output_name = f'test_file10_{date}'
+output_name = f'single_line_0-5umline_dosetest_{date}'
 output_path = os.path.join(position_list_dir,
                            f'{output_name}.xdfl')
 io.write_out_file(out_path=output_path,
-                  array=position_final)
+                  array=z_position_final)
