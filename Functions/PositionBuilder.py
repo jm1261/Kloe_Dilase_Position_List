@@ -92,12 +92,12 @@ def repeat_position_list(pos_array,
                 position_list.append(line)
             if split[0] == '"LWO"':
                 file_type = split[0]
-                file_name = split[1]
-                mod = round(float((split[2])[1:-1])+((i+1)*repeat_array[0]), 3)
-                vel = round(float((split[3])[1:-1])+((i+1)*repeat_array[1]), 3)
-                x = round(float((split[4])[1:-1])+((i+1)*repeat_array[2]), 3)
-                y = round(float((split[5])[1:-1])+((i+1)*repeat_array[3]), 3)
-                z = round(float((split[6])[1:-1])+((i+1)*repeat_array[4]), 3)
+                file_name = f'{split[1]} {split[2]}'
+                mod = round(float((split[3])[1:-1])+((i+1)*repeat_array[0]), 3)
+                vel = round(float((split[4])[1:-1])+((i+1)*repeat_array[1]), 3)
+                x = round(float((split[5])[1:-1])+((i+1)*repeat_array[2]), 3)
+                y = round(float((split[6])[1:-1])+((i+1)*repeat_array[3]), 3)
+                z = round(float((split[7])[1:-1])+((i+1)*repeat_array[4]), 3)
                 new_line = (f'{file_type} '
                             f'{file_name} '
                             f'"{mod}" '
