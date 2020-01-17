@@ -1,4 +1,18 @@
 import os
+import json
+
+
+def getConfig(config_path):
+    '''
+    Extract user variables from JSON formatted configuration file
+    Args:
+        config_path: <string> config file path
+    Returns:
+        <dict> of user variables, all values as strings
+    '''
+    if config_path:
+        with open(config_path, 'r') as f:
+            return json.load(f)
 
 
 def check_dir_exists(dir_path):
