@@ -2,7 +2,7 @@ import os
 import json
 
 
-def getConfig(config_path):
+def get_config(config_path):
     '''
     Extract user variables from JSON formatted configuration file
     Args:
