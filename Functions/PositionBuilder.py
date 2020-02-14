@@ -1,4 +1,6 @@
-def laser_choice(pos_i):
+import os
+
+def laser_choice(params):
     '''
     Selects one of the two laser lines to assign to the position list
     Args:
@@ -8,7 +10,7 @@ def laser_choice(pos_i):
         laser_string: <string> string to tell Dilase software which laser to
                       assign to a pattern position list
     '''
-    laser_line = pos_i['laser']
+    laser_line = params["laser"]
     if laser_line == 10:
         laser_string = f'"ALS" "Ligne2/Laser1" '
     elif laser_line == 0.5:
@@ -16,8 +18,7 @@ def laser_choice(pos_i):
     return laser_string
 
 
-def position_list(pos_i,
-                  shift_array):
+def position_list(params):
     '''
     Builds a simple position list. Assigns a laser line, file type, file name,
     modulation, velocity, x-, y-, z- paramters. Can repeat a single design
@@ -34,26 +35,19 @@ def position_list(pos_i,
                        repeated pattern in the Dilase format
     '''
     position_list = []
-    laser_string = laser_choice(pos_i=pos_i)
+    laser_string = laser_choice(params=params)
     position_list.append(laser_string)
-    initial_position = (f'"LWO" '
-                        f'"{pos_i["file_name"]}" '
-                        f'"{pos_i["modulation"]}" '
-                        f'"{pos_i["velocity"]}" '
-                        f'"{pos_i["x_initial"]}" '
-                        f'"{pos_i["y_initial"]}" '
-                        f'"{pos_i["z_initial"]}" ')
-    position_list.append(initial_position)
-    for i in range(0, shift_array[5]):
-        file_type = "LWO"
-        file_name = f'"{pos_i["file_name"]}"'
-        mod = round(float(pos_i["modulation"])+((i+1)*shift_array[0]), 3)
-        vel = round(float(pos_i["velocity"])+((i+1)*shift_array[1]), 3)
-        x_pos = round(float(pos_i["x_initial"])+((i+1)*shift_array[2]), 3)
-        y_pos = round(float(pos_i["y_initial"])+((i+1)*shift_array[3]), 3)
-        z_pos = round(float(pos_i["z_initial"])+((i+1)*shift_array[4]), 3)
-        position_string = (f'"{file_type}" '
-                           f'{file_name} '
+    dir_path = f'{params["filepath"]}'
+    file_name = f'{params["filename"]}.LWO'
+    file_path = os.path.join(dir_path, file_name)
+    for i in range(0, params["repeats"]+1):
+        mod = round(float(params["modulation"])+(i*params["delta_mod"]), 3)
+        vel = round(float(params["velocity"])+(i*params["delta_vel"]), 3)
+        x_pos = round(float(params["x_initial"])+(i*params["delta_x"]), 3)
+        y_pos = round(float(params["y_initial"])+(i*params["delta_y"]), 3)
+        z_pos = round(float(params["z_initial"])+(i*params["delta_z"]), 3)
+        position_string = ('"LWO" '
+                           f'"{file_path}" '
                            f'"{mod}" '
                            f'"{vel}" '
                            f'"{x_pos}" '
