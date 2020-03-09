@@ -1,14 +1,7 @@
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction
-
-// $(document).ready(function () {
-//     console.log("ready!");
-//     var butt = document.getElementById("submit");
-//     butt.addEventListener('click', getValues);
-// });
-
 function makePosList(){
+    console.log('Make pos list pressed')
     var pls = getValues();
-    var outstring = formatValues();
+    var outstring = formatValues(pls);
     saveValues();
 }
 
@@ -35,12 +28,20 @@ function getValues(){
     return posListValues;
 };
 
-function formatValues(){
+function formatValues(pls){
 
+    for(var i = 0; i < (pls.repeats); i++){
+        var plsarray = [pls.filepath, pls.modulation, pls.velocity,
+            pls.x_initial, pls.y_initial, pls.z_initial];
+
+        var positionString = '"LWO' + plsarray.join(' " ') + ' " '
+        console.log(positionString)
+    }
 }
 
 function saveValues(){
-    
+    console.log('Saving values')
+
 }
 
 var defaultInputs = {
