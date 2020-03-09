@@ -1,9 +1,17 @@
-div {
-    display: block;
+.inField {
     width: 20em;
     height: 2em;
 }
 
-input {
+.outField{
     float: right;
+    border: 2px;
+}
+
+.input{
+    float: left
+}
+
+.output{
+    float: right
 }
