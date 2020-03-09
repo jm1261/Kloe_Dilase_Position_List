@@ -1,9 +1,9 @@
 function makePosList(){
-    console.log('Make pos list pressed')
+
     var pls = getValues();
+    var outstring = '';
 
     // Select laser
-    var outstring = '';
     if (pls.laser=='10'){
         outstring = '"ALS" "Ligne2/Laser1"' +  '<br>';
     } else {
@@ -12,9 +12,8 @@ function makePosList(){
 
     // Add parameter sweep
     outstring += formatSweep(pls);
-    console.log(outstring);
 
-    // Output
+    // Output to page
     document.getElementById('outDiv').innerHTML += outstring;
 }
 
