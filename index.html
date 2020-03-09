@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kloe form</title>
     <link rel="stylesheet", href="./style.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <script src='./main.js'></script>
 </head>
 <body>
-    <form>
     <div>
         <label for="filepath" >Filepath</label>
         <input id="filepath", type="text">
@@ -66,12 +66,11 @@
         <input id="delta_z", type="number">
     </div>
     <div>
-        <label for="repeats" >"repeats"</label>
+        <label for="repeats" >repeats</label>
         <input id="repeats", type="number">
     </div>
     <div>
-        <input id="submit", type="Submit", value="Enter">
+        <button id="submit", onclick="makePosList()">Enter</button>
     </div>
-    </form>
 </body>
 </html>
