@@ -4,7 +4,8 @@
   "description": "Kloe Position List",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,8 @@
     "url": "https://github.com/g-duff/Kloe_Dilase_Position_List/issues"
   },
   "homepage": "https://github.com/g-duff/Kloe_Dilase_Position_List#readme",
-  "dependencies": {
-    "file-saver": "^2.0.2",
-    "fs": "0.0.1-security"
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^8.1.0"
   }
 }
