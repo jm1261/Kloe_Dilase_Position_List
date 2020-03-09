@@ -1,6 +1,6 @@
 import os
 
-def laser_choice(params):
+def laser_choice(laser_line):
     '''
     Selects one of the two laser lines to assign to the position list
     Args:
@@ -10,7 +10,6 @@ def laser_choice(params):
         laser_string: <string> string to tell Dilase software which laser to
                       assign to a pattern position list
     '''
-    laser_line = params["laser"]
     if laser_line == 10:
         laser_string = f'"ALS" "Ligne2/Laser1" '
     elif laser_line == 0.5:
@@ -18,7 +17,8 @@ def laser_choice(params):
     return laser_string
 
 
-def position_list(params):
+def position_list(filepath ,filename, repeats, modulation, delta_mod, velocity, delta_vel,
+    x_initial, delta_x, y_initial, delta_y, z_initial, laser, delta_z, **kwargs):
     '''
     Builds a simple position list. Assigns a laser line, file type, file name,
     modulation, velocity, x-, y-, z- paramters. Can repeat a single design
@@ -35,17 +35,17 @@ def position_list(params):
                        repeated pattern in the Dilase format
     '''
     position_list = []
-    laser_string = laser_choice(params=params)
+    laser_string = laser_choice(laser)
     position_list.append(laser_string)
-    dir_path = f'{params["filepath"]}'
-    file_name = f'{params["filename"]}.LWO'
+    dir_path = f'{filepath}'
+    file_name = f'{filename}.LWO'
     file_path = os.path.join(dir_path, file_name)
-    for i in range(0, params["repeats"]+1):
-        mod = round(float(params["modulation"])+(i*params["delta_mod"]), 3)
-        vel = round(float(params["velocity"])+(i*params["delta_vel"]), 3)
-        x_pos = round(float(params["x_initial"])+(i*params["delta_x"]), 3)
-        y_pos = round(float(params["y_initial"])+(i*params["delta_y"]), 3)
-        z_pos = round(float(params["z_initial"])+(i*params["delta_z"]), 3)
+    for i in range(0, repeats+1):
+        mod = round(float(modulation)+(i*delta_mod), 3)
+        vel = round(float(velocity)+(i*delta_vel), 3)
+        x_pos = round(float(x_initial)+(i*delta_x), 3)
+        y_pos = round(float(y_initial)+(i*delta_y), 3)
+        z_pos = round(float(z_initial)+(i*delta_z), 3)
         position_string = ('"LWO" '
                            f'"{file_path}" '
                            f'"{mod}" '

@@ -17,7 +17,7 @@ print(params)
 # pattern_shift = [modulation, velocity, x, y, z, repeats] ##
 # NOTE WELL, if repeat=0 only the initial settings are set ##
 # repeat=1 yields two patterns with step sizes given below ##
-position_list = pb.position_list(params=params)
+position_list = pb.position_list(**params)
 print(position_list)
 
 # # pattern_repeat = [modulation, velocity, x, y, z, repeats] ##
