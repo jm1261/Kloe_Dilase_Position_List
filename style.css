@@ -1,17 +1,18 @@
-.inField {
+input{
+    float: right;
+}
+
+.inField{
+    float: left;
     width: 20em;
     height: 2em;
 }
 
-.outField{
+#inDiv{
+    float: left;
+    width: 20em;
+}
+
+#outDiv{
     float: right;
-    border: 2px;
-}
-
-.input{
-    float: left
-}
-
-.output{
-    float: right
 }

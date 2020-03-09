@@ -9,30 +9,30 @@
     <script src='./main.js'></script>
 </head>
 <body>
-    <div class="input">
+    <div id=inDiv>
     <div class="inField">
         <label for="filepath" >Filepath</label>
-        <input id="filepath", type="text", value='a'>
+        <input id="filepath", type="text", value='D:\\LITHO FILES'>
     </div>
     <div class="inField">
         <label for="user">User</label>
-        <input id="user", type="text", value='b'>
+        <input id="user", type="text", value='Josh'>
     </div>
     <div class="inField">
         <label for="filename">Filename</label>
-        <input id="filename", type="text", value='c'>
+        <input id="filename", type="text", value='Test'>
     </div>
     <div class="inField">
         <label for="laser">laser</label>
-        <input id="laser", type="number", value=1>
+        <input id="laser", type="number", value=10>
     </div>
     <div class="inField">
         <label for="modulation">Laser modulation</label>
-        <input id="modulation", type="number", value=1>
+        <input id="modulation", type="number", value=0>
     </div>
     <div class="inField">
         <label for="velocity">Laser velocity</label>
-        <input id="velocity", type="number", value=1>
+        <input id="velocity", type="number", value=50>
     </div>
     <div class="inField">
         <label for="x_initial">Initial x position</label>
@@ -44,11 +44,11 @@
     </div>
     <div class="inField">
         <label for="z_initial" >Initial z position</label>
-        <input id="z_initial", type="number", value=1>
+        <input id="z_initial", type="number", value=0>
     </div>
     <div class="inField">
         <label for="delta_mod" >Modulation (delta)</label>
-        <input id="delta_mod", type="number", value=1>
+        <input id="delta_mod", type="number", value=10>
     </div>
     <div class="inField">
         <label for="delta_vel" >Velocity (delta)</label>
@@ -56,7 +56,7 @@
     </div>
     <div class="inField">
         <label for="delta_x" >Delta x</label>
-        <input id="delta_x", type="number", value=1>
+        <input id="delta_x", type="number", value=0.5>
     </div>
     <div class="inField">
         <label for="delta_y" >delta y</label>
@@ -68,16 +68,13 @@
     </div>
     <div class="inField">
         <label for="repeats" >repeats</label>
-        <input id="repeats", type="number", value=3>
+        <input id="repeats", type="number", value=10>
     </div>
     <div class="inField">
         <button id="submit", onclick="makePosList()">Enter</button>
     </div>
     </div>
-    <div class="output">
-    <div class="outField">
-        Output goes here
-    </div>
+    <div id="outDiv">
     </div>
 </body>
 </html>
