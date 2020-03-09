@@ -1,0 +1,26 @@
+{
+  "name": "kloe_dilase_position_list",
+  "version": "0.0.0",
+  "description": "Kloe Position List",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g-duff/Kloe_Dilase_Position_List.git"
+  },
+  "keywords": [
+    "Kloe",
+    "Lithography"
+  ],
+  "author": "George Duffett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/g-duff/Kloe_Dilase_Position_List/issues"
+  },
+  "homepage": "https://github.com/g-duff/Kloe_Dilase_Position_List#readme",
+  "dependencies": {
+    "file-saver": "^2.0.2"
+  }
+}
