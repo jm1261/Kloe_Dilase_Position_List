@@ -1,80 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kloe form</title>
-    <link rel="stylesheet", href="./style.css">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-    <script src='./main.js'></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Kloe Position List Form</title>
 </head>
+
 <body>
-    <div id=inDiv>
-    <div class="inField">
-        <label for="filepath" >Filepath</label>
-        <input id="filepath", type="text", value='D:\\LITHO FILES'>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="filepath">Filepath</label>
+                    <input class="form-control form-control-sm" id="filepath" , type="text" ,
+                        value='D:\\LITHO FILES'>
+                </div>
+                <div class="form-group">
+                    <label for="user">User</label>
+                    <input class="form-control form-control-sm" id="user" , type="text" , value='Josh'>
+                </div>
+                <div class="form-group">
+                    <label for="filename">Filename</label>
+                    <input class="form-control form-control-sm" id="filename" , type="text" , value='Test'>
+                </div>
+                <div class="form-group">
+                    <label for="laser">laser</label>
+                    <input class="form-control form-control-sm" id="laser" , type="number" , value=10>
+                </div>
+                <div class="form-group">
+                    <label for="modulation">Laser modulation</label>
+                    <input class="form-control form-control-sm" id="modulation" , type="number" , value=0>
+                </div>
+                <div class="form-group">
+                    <label for="velocity">Laser velocity</label>
+                    <input class="form-control form-control-sm" id="velocity" , type="number" , value=50>
+                </div>
+                <div class="form-group">
+                    <label for="x_initial">Initial x position</label>
+                    <input class="form-control form-control-sm" id="x_initial" , type="number" , value=1>
+                </div>
+                <div class="form-group">
+                    <label for="y_initial">Initial y position</label>
+                    <input class="form-control form-control-sm" id="y_initial" , type="number" , value=1>
+                </div>
+                <div class="form-group">
+                    <label for="z_initial">Initial z position</label>
+                    <input class="form-control form-control-sm" id="z_initial" , type="number" , value=0>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="delta_mod">Modulation (delta)</label>
+                    <input class="form-control form-control-sm" id="delta_mod" , type="number" , value=10>
+                </div>
+                <div class="form-group">
+                    <label for="delta_vel">Velocity (delta)</label>
+                    <input class="form-control form-control-sm" id="delta_vel" , type="number" , value=1>
+                </div>
+                <div class="form-group">
+                    <label for="delta_x">Delta x</label>
+                    <input class="form-control form-control-sm" id="delta_x" , type="number" , value=0.5>
+                </div>
+                <div class="form-group">
+                    <label for="delta_y">delta y</label>
+                    <input class="form-control form-control-sm" id="delta_y" , type="number" , value=1>
+                </div>
+                <div class="form-group">
+                    <label for="delta_z">delta z</label>
+                    <input class="form-control form-control-sm" id="delta_z" , type="number" , value=1>
+                </div>
+                <div class="form-group">
+                    <label for="repeats">repeats</label>
+                    <input class="form-control form-control-sm" id="repeats" , type="number" , value=10>
+                </div>
+                <div class="form-group">
+                    <button id="submit" type="submit" class="btn btn-primary" ,
+                        onclick="makePosList()">Enter</button>
+                </div>
+            </div>
+            <div class="col">
+                <div id="outDiv">
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="inField">
-        <label for="user">User</label>
-        <input id="user", type="text", value='Josh'>
-    </div>
-    <div class="inField">
-        <label for="filename">Filename</label>
-        <input id="filename", type="text", value='Test'>
-    </div>
-    <div class="inField">
-        <label for="laser">laser</label>
-        <input id="laser", type="number", value=10>
-    </div>
-    <div class="inField">
-        <label for="modulation">Laser modulation</label>
-        <input id="modulation", type="number", value=0>
-    </div>
-    <div class="inField">
-        <label for="velocity">Laser velocity</label>
-        <input id="velocity", type="number", value=50>
-    </div>
-    <div class="inField">
-        <label for="x_initial">Initial x position</label>
-        <input id="x_initial", type="number", value=1>
-    </div>
-    <div class="inField">
-        <label for="y_initial" >Initial y position</label>
-        <input id="y_initial", type="number", value=1>
-    </div>
-    <div class="inField">
-        <label for="z_initial" >Initial z position</label>
-        <input id="z_initial", type="number", value=0>
-    </div>
-    <div class="inField">
-        <label for="delta_mod" >Modulation (delta)</label>
-        <input id="delta_mod", type="number", value=10>
-    </div>
-    <div class="inField">
-        <label for="delta_vel" >Velocity (delta)</label>
-        <input id="delta_vel", type="number", value=1>
-    </div>
-    <div class="inField">
-        <label for="delta_x" >Delta x</label>
-        <input id="delta_x", type="number", value=0.5>
-    </div>
-    <div class="inField">
-        <label for="delta_y" >delta y</label>
-        <input id="delta_y", type="number", value=1>
-    </div>
-    <div class="inField">
-        <label for="delta_z" >delta z</label>
-        <input id="delta_z", type="number", value=1>
-    </div>
-    <div class="inField">
-        <label for="repeats" >repeats</label>
-        <input id="repeats", type="number", value=10>
-    </div>
-    <div class="inField">
-        <button id="submit", onclick="makePosList()">Enter</button>
-    </div>
-    </div>
-    <div id="outDiv">
-    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src='./main.js'></script>
 </body>
+
 </html>
