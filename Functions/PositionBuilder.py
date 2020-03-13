@@ -10,7 +10,7 @@ def laser_choice(params):
         laser_string: <string> string to tell Dilase software which laser to
                       assign to a pattern position list
     '''
-    laser_line = params["laser"]
+    laser_line = float(params["laser"])
     if laser_line == 10:
         laser_string = f'"ALS" "Ligne2/Laser1" '
     elif laser_line == 0.5:
